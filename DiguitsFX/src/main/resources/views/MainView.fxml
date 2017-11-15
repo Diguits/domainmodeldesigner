@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.diguits.javafx.controllers.maincontainers.MainController">
+	<top>
+		<MenuBar fx:id="mainMenuBar" BorderPane.alignment="CENTER" />
+	</top>
+	<bottom>
+		<VBox BorderPane.alignment="CENTER">
+			<children>
+				<Separator prefWidth="200.0" />
+				<HBox prefHeight="24.0" prefWidth="200.0">
+					<children>
+						<VBox prefHeight="200.0" prefWidth="100.0" />
+					</children>
+				</HBox>
+			</children>
+		</VBox>
+	</bottom>
+	<center>
+		<BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+			<top>
+				<ToolBar fx:id="mainToolBar" BorderPane.alignment="CENTER">
+					<BorderPane.margin>
+						<Insets />
+					</BorderPane.margin>
+					<opaqueInsets>
+						<Insets />
+					</opaqueInsets>
+				</ToolBar>
+			</top>
+			<center>
+				<SplitPane dividerPositions="0.3747" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+					<items>
+						<AnchorPane fx:id="leftHole" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                     <items>
+                        <SplitPane dividerPositions="0.340080971659919" prefHeight="200.0" prefWidth="160.0">
+                           <items>
+                            <AnchorPane fx:id="centerHole" minHeight="0.0" minWidth="0.0" />
+            						<AnchorPane fx:id="rightHole" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                           </items>
+                        </SplitPane>
+                    <AnchorPane fx:id="bottomHole" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </items>
+                  </SplitPane>
+					</items>
+				</SplitPane>
+			</center>
+		</BorderPane>
+	</center>
+</BorderPane>

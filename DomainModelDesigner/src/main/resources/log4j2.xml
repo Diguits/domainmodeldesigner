@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.diguits.javafx.log">
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="current date-%d LEVEL-%-5p  Thread-[%t]  Method-%M()   Class name-%C   Message-%m%n" />
+		</Console>
+		<File name="TOFILE" fileName="domainmodeldesigner.log">
+			<PatternLayout
+				pattern="current date-%d LEVEL-%-5p  Thread-[%t]  Method-%M()   Class name-%C   Message-%m%n" />
+		</File>
+		<LogControllerAppender name="LogController">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %c{1}:%L - %m%n" />
+		</LogControllerAppender>
+	</Appenders>
+	<loggers>
+		<Logger name="org.apache.log4j.xml" level="all" />
+		<root level="all">
+			<appender-ref ref="LogController" />
+			<appender-ref ref="TOFILE" />
+		</root>
+	</loggers>
+</Configuration>

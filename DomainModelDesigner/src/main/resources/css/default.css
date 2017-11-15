@@ -1,0 +1,130 @@
+.grid-pane{
+	-fx-padding: 5;
+}
+.anchor-pane{
+	-fx-padding: 5;
+}
+.tool-bar {
+-fx-spacing: 2.0px;
+-fx-padding: 3.0px;
+-fx-background-color: transparent;
+}
+
+.tool-bar > .container {
+-fx-spacing: 1.0;
+}
+
+.separator:vertical {
+-fx-pref-width: 4.0;
+}
+
+.tree-cell {
+	-fx-padding: 1.0;
+}
+
+.table-view .cell-selection{
+	-fx-background-color: aqua;
+}
+
+.tool-bar > .container> .button {
+    -fx-background-color: transparent;
+    -fx-padding: 3.0;
+}
+
+.tool-bar > .container> .button:hover{
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0.0 0.0 -1.0 0.0, 0.0, 1.0, 2.0;
+    -fx-background-radius: 3.0px, 3.0px, 2.0px, 1.0px;
+    -fx-padding: 3.0px;/*0.333333em 0.666667em 0.333333em 0.666667em;*/ /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+.tab-pane:top *.tab-header-area {
+ -fx-background-insets: 0.0;
+ -fx-padding: 0.0;
+}
+
+.tab-pane:bottom *.tab-header-area {
+ -fx-background-insets: 0.0;
+ -fx-padding: 0.0;
+}
+
+.tab-pane:left *.tab-header-area {
+ -fx-background-insets: 0.0;
+ -fx-padding: 0.0;
+}
+
+.tab-pane:right *.tab-header-area {
+ -fx-background-insets: 0.0;
+ -fx-padding: 0.0;
+}
+
+.tab{
+-fx-background-radius: 0.0;
+-fx-background-insets: 0.0px;
+-fx-border-width: 0.0 1.0 1.0 0.0;
+-fx-border-color: darkgray;
+-fx-padding: 0.0 5.0 0.0 5.0;
+-fx-pref-height: 24.0px;
+}
+
+.tab:selected{
+	-fx-border-color: transparent darkgrey transparent  transparent;
+	-fx-background-insets: 0.0;
+}
+
+.tab-pane *.tab-header-background {
+ -fx-padding:0.0;
+ -fx-background-insets:0.0;
+ -fx-border-width: 0.0 0.0 1.0 0.0;
+ -fx-border-color: darkgray;
+ -fx-background-color: transparent;
+}
+
+.tab-header-area {
+ -fx-padding: 0.0;
+ -fx-background-insets: 0.0;
+}
+
+.menu-bar{
+	-fx-background-color:transparent;
+	-fx-border-width: 0.0 0.0 1.0 0.0;
+	-fx-border-color: darkgray;
+}
+
+.menu{
+	-fx-padding: 3.0;
+}
+
+.scroll-pane {
+    -fx-border-style: none;
+    -fx-padding: 0.0;
+}
+
+.split-pane *.split-pane-divider {
+    -fx-padding: 0.0 0.0 0.0 1.0px;
+}
+
+.tree-view{
+	-fx-border-style: none;
+	-fx-padding : 0.0;
+	-fx-background-color:transparent;
+}
+
+.list-view{
+	-fx-border-style: none;
+	-fx-padding : 0.0;
+}
+.progress-bar > .bar {
+    -fx-background-insets: 1 1 2 1;
+    -fx-padding: 0.40em;
+}
+.tooltip{
+	-fx-text-fill: black;
+	-fx-font-size: 1em;
+	-fx-padding: 3;
+	-fx-background-radius: 3 3 3 3;
+	-fx-background-color:  linear-gradient(white, lightgray );
+}
