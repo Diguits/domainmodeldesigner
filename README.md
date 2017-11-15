@@ -1,2 +1,2 @@
-# domainmodeldesigner
-DomainModelDesinger is a tool to design domain models and generate code from it using a simple template engine.
+# DomainModelDesigner
+DomainModelDesinger is a tool to design domain models and generate code from them using a simple template engine.
