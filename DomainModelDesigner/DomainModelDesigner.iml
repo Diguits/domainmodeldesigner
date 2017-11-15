@@ -13,7 +13,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/guice-4.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/guice-4.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -22,7 +22,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/log4j-api-2.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/log4j-api-2.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -31,7 +31,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/slf4j-api-1.7.19.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/slf4j-api-1.7.19.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -41,7 +41,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/controlsfx-8.40.10-20151016.125848-547.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/controlsfx-8.40.10-20151016.125848-547.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -52,7 +52,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/aopalliance-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/aopalliance-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

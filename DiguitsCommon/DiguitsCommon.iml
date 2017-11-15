@@ -11,7 +11,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/gson-2.3.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/gson-2.3.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -20,7 +20,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/slf4j-api-1.7.19.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/slf4j-api-1.7.19.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -29,7 +29,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/simple-xml-2.7.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/simple-xml-2.7.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -38,7 +38,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/univocity-parsers-2.1.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/univocity-parsers-2.1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -47,7 +47,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/javax-inject.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/javax-inject.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -56,7 +56,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../Libs/guice-4.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../libs/guice-4.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
