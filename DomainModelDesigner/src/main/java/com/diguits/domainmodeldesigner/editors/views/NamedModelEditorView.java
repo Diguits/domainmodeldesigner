@@ -14,10 +14,7 @@ import com.diguits.javafx.model.NamedModelBase;
 import com.diguits.javafx.views.INodeFactoryHelper;
 
 import javafx.scene.Node;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 
@@ -40,7 +37,8 @@ public class NamedModelEditorView<TModel extends NamedModelBase> extends Contain
 		txaDescription = nodeFactory.createTextAreaInsideGrid(generalGridPane, "%description");
 
 		tabGeneral = nodeFactory.createAndAddTab(tabPane, "%general");
-		tabGeneral.setContent(nodeFactory.addAndFitToAnchorPane(generalGridPane));
+
+		tabGeneral.setContent(nodeFactory.wrapInScrollPane(generalGridPane));
 		return tabPane;
 	}
 

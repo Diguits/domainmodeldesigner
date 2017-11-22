@@ -1,14 +1,12 @@
 package com.diguits.domainmodeldefinition.serialization.mappers;
 
 import com.diguits.domainmodeldefinition.serialization.dtomodel.ColumnDefDTO;
-import com.diguits.domainmodeldefinition.serialization.dtomodel.LocalizedDataDefDTO;
 import com.diguits.domainmodeldefinition.serialization.dtomodel.FilterValueDefDTO;
 import com.diguits.domainmodeldefinition.definitions.RelationOverrideDef;
 import com.diguits.domainmodeldefinition.definitions.FieldRelationshipDataDef;
 import com.diguits.domainmodeldefinition.definitions.FilterValueDef;
 import com.diguits.domainmodeldefinition.definitions.ColumnDef;
 import com.diguits.domainmodeldefinition.serialization.dtomodel.RelationOverrideDefDTO;
-import com.diguits.domainmodeldefinition.definitions.LocalizedDataDef;
 import com.diguits.domainmodeldefinition.serialization.dtomodel.FieldRelationshipDataDefDTO;
 import com.diguits.common.mapping.MappingContext;
 import com.diguits.common.mapping.IMapperProvider;
@@ -57,14 +55,11 @@ public class FieldRelationshipDataDefToFieldRelationshipDataDefDTOMapper extends
 		if(source.getRelationshipPart()!=null)
 			target.setRelationshipPartId(source.getRelationshipPart().getId());
 		super.map(source, target, context);
+		target.getLocalizedDataList().clear();
 	}
 
 	public void mapBack(FieldRelationshipDataDefDTO source, FieldRelationshipDataDef target, MappingContext context) {
 		if(source == null || target == null) return;
-		List<LocalizedDataDef> LocalizedDatasList = target.getLocalizedDatas();
-		for (LocalizedDataDefDTO item : source.getLocalizedDatas()) {
-			LocalizedDatasList.add( getLocalizedDataDefToLocalizedDataDefDTOMapper().mapBack(item, context));
-		}
 		List<ColumnDef> ExtraColumnsList = target.getExtraColumns();
 		for (ColumnDefDTO item : source.getExtraColumns()) {
 			ExtraColumnsList.add( getColumnDefToColumnDefDTOMapper().mapBack(item, context));
@@ -78,6 +73,7 @@ public class FieldRelationshipDataDefToFieldRelationshipDataDefDTOMapper extends
 			OverridesList.add( getRelationOverrideDefToRelationOverrideDefDTOMapper().mapBack(item, context));
 		}
 		super.mapBack(source, target, context);
+		target.getLocalizedDataList().clear();
 	}
 
 	@Override

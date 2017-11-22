@@ -42,8 +42,8 @@ public abstract class BaseDefToBaseDefDTOMapper<TFrom extends BaseDef, TTo exten
 		if(source.getOwner()!=null)
 			target.setOwnerId(source.getOwner().getId());
 		target.setId(source.getId());
-		List<LocalizedDataDefDTO> LocalizedDatasList = target.getLocalizedDatas();
-		for (LocalizedDataDef item : source.getLocalizedDatas()) {
+		List<LocalizedDataDefDTO> LocalizedDatasList = target.getLocalizedDataList();
+		for (LocalizedDataDef item : source.getLocalizedDataList()) {
 			LocalizedDatasList.add( getLocalizedDataDefToLocalizedDataDefDTOMapper().map(item, context));
 		}
 		List<CustomFieldValueDefDTO> CustomFieldValuesList = target.getCustomFieldValues();
@@ -58,8 +58,8 @@ public abstract class BaseDefToBaseDefDTOMapper<TFrom extends BaseDef, TTo exten
 		if(source == null || target == null) return;
 		target.setDescription(source.getDescription());
 		target.setId(source.getId());
-		List<LocalizedDataDef> LocalizedDatasList = target.getLocalizedDatas();
-		for (LocalizedDataDefDTO item : source.getLocalizedDatas()) {
+		List<LocalizedDataDef> LocalizedDatasList = target.getLocalizedDataList();
+		for (LocalizedDataDefDTO item : source.getLocalizedDataList()) {
 			LocalizedDatasList.add( getLocalizedDataDefToLocalizedDataDefDTOMapper().mapBack(item, context));
 		}
 		List<CustomFieldValueDef> CustomFieldValuesList = target.getCustomFieldValues();
@@ -71,15 +71,15 @@ public abstract class BaseDefToBaseDefDTOMapper<TFrom extends BaseDef, TTo exten
 			BaseDefDTOMappingContext baseDefMappingContext = (BaseDefDTOMappingContext) context;
 			if (source instanceof BaseDefDTO) {
 				BaseDefDTO sourceDTO = (BaseDefDTO) source;
-				int i = sourceDTO.getLocalizedDatas().size() - 1;
+				int i = sourceDTO.getLocalizedDataList().size() - 1;
 				while (i >= 0) {
-					if (target.getLocalizedDatas().get(i) != null && sourceDTO.getLocalizedDatas().get(i) != null) {
+					if (target.getLocalizedDataList().get(i) != null && sourceDTO.getLocalizedDataList().get(i) != null) {
 						LocaleDef locale = baseDefMappingContext.getLocales()
-								.get(sourceDTO.getLocalizedDatas().get(i).getLocaleId());
+								.get(sourceDTO.getLocalizedDataList().get(i).getLocaleId());
 						if(locale == null)
-							target.getLocalizedDatas().remove(i);
+							target.getLocalizedDataList().remove(i);
 						else
-							target.getLocalizedDatas().get(i).setLocale(locale);
+							target.getLocalizedDataList().get(i).setLocale(locale);
 					}
 					i--;
 				}

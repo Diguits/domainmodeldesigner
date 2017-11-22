@@ -25,7 +25,7 @@ public class TemplateProjectApplyController
 	TemplateProjectApplyingController templateProjectApplyingController;
 
 	@Inject
-	DomainModelClientService domainModelClienteService;
+	DomainModelClientService domainModelClientService;
 
 	@Inject
 	public TemplateProjectApplyController(TemplateProjectApplyView view) {

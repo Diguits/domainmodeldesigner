@@ -20,12 +20,12 @@ public abstract class JsonSerializerMap<T, TDTO> extends SerializerMapBase<T, TD
 
     @Override
     protected void serializeDTO(OutputStream targetStream, TDTO dto) throws IOException {
-        SimpleXMLSerializerHelper.serialize(targetStream, dto, logger);
+        JsonSerializerHelper.serialize(targetStream, dto, logger);
     }
 
     @Override
     protected TDTO deserializeDTO(InputStream sourceStream, Class<TDTO> dtoClass) {
-        return SimpleXMLSerializerHelper.deserialize(sourceStream, dtoClass, logger);
+        return JsonSerializerHelper.deserialize(sourceStream, dtoClass, logger);
     }
 
 }

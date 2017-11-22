@@ -57,11 +57,7 @@ public class FilterValueDefEditorView extends BaseDefEditorView<FilterValueDefMo
 		nodeFactory.createLabelInsideGrid(gridPane, "%value", 3);
 		nodeFactory.createLabelInsideGrid(gridPane, "%second_value", 4);
 
-		AnchorPane anchorPane = new AnchorPane();
-		anchorPane.getChildren().add(gridPane);
-		nodeFactory.fitToAnchorPane(gridPane);
-		tab.setContent(anchorPane);
-		tab.setContent(anchorPane);
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 
 		return contentView;
 	}

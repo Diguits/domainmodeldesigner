@@ -3,7 +3,7 @@ package com.diguits.javafx.system.controllers;
 import com.diguits.javafx.container.decorators.Action;
 import com.diguits.javafx.container.decorators.DecoratorBase;
 import com.diguits.javafx.container.decorators.OptionGroup;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.google.inject.Inject;
 
 public class SystemDecorator extends DecoratorBase {
@@ -32,12 +32,12 @@ public class SystemDecorator extends DecoratorBase {
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 		OptionGroup fileOptionGroup = builder.addOptionGroup(SystemDecorator.FILE)
 				.action(fileAction)
 				.priority(100)

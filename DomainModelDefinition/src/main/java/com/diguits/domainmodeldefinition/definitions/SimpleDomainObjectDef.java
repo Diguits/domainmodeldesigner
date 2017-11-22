@@ -13,7 +13,7 @@ public class SimpleDomainObjectDef extends BaseDef {
 		initialize();
 	}
 
-	private void initialize() {
+	protected void initialize() {
 	}
 
 	public ModuleDef getModule() {

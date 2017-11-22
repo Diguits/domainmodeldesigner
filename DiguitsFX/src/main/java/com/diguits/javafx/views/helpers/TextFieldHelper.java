@@ -2,14 +2,20 @@ package com.diguits.javafx.views.helpers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
 public class TextFieldHelper {
 
 	public static TextField createTextField() {
 		TextField textField = new TextField();
+		EventsHelper.setMoveNextOnEnter(textField);
 		return textField;
 	}
 

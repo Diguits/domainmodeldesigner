@@ -18,7 +18,7 @@ public interface IEntityDefinitionVisitor {
     void visitColumnDef(ColumnDef columnDef, BaseDef owner);
     void visitApplicationDef(ApplicationDef applicationDef, BaseDef owner);
     void visitRelationshipPartDef(RelationshipPartDef RelationshipPartDef, BaseDef owner);
-	void visiCustomFieldDef(CustomFieldDef customFieldDef, BaseDef owner);
+	void visitCustomFieldDef(CustomFieldDef customFieldDef, BaseDef owner);
 	void visitCustomFieldValueDef(CustomFieldValueDef customFieldValueDef, BaseDef owner);
 	void visitLocalizedDataDef(LocalizedDataDef localizedDataDef, BaseDef owner);
 	void visitLocaleDef(LocaleDef localeDef, BaseDef owner);

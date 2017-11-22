@@ -45,12 +45,12 @@ public abstract class TreeContainerDecorator<TModel extends NamedModelBase, TCon
 	}
 
 	@Override
-	protected void buildContextMenuOptions(TModel model, OptionListBilder builder) {
+	protected void buildContextMenuOptions(TModel model, OptionListBuilder builder) {
 		if (!controller.isTreeItemContainer(model))
 			buildDefaultContextMenuOptions(builder);
 	}
 
-	protected void buildDefaultContextMenuOptions(OptionListBilder builder) {
+	protected void buildDefaultContextMenuOptions(OptionListBuilder builder) {
 		builder.addOption()
 				.action(openEditorAction)
 				.priority(100);
@@ -60,7 +60,7 @@ public abstract class TreeContainerDecorator<TModel extends NamedModelBase, TCon
 	}
 
 	@Override
-	protected void buildCustomToolBarOptions(OptionListBilder builder) {
+	protected void buildCustomToolBarOptions(OptionListBuilder builder) {
 		builder.addOption()
 				.priority(100)
 				.action(collapseAction);

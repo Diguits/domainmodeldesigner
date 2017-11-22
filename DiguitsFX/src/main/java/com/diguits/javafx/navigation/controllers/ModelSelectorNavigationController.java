@@ -155,7 +155,7 @@ public abstract class ModelSelectorNavigationController<TView extends ModelSelec
 					if (positions != null)
 						positionModel.add(new ModelPositions(positions, model));
 				}
-				setModelPsitionssToView(positionModel.stream());
+				setModelPositionsToView(positionModel.stream());
 
 			} else {
 				setModelsToView(getModels().stream());
@@ -166,7 +166,7 @@ public abstract class ModelSelectorNavigationController<TView extends ModelSelec
 	public void show() {
 		setModelsToView(getModels().stream());
 		getView().getTxfFilter().setText("");
-		if (DialogHelper.showNoButtonsDialog(this, resources.getString("navigate_to"), 300, 500,
+		if (DialogHelper.showNoButtonsDialog(this, resources.getString("navigate_to"), 400, 600,
 				StageStyle.UNDECORATED)) {
 			ModelPositions selectedModel = getView().getSelectedModel();
 			if (selectedModel != null)
@@ -182,7 +182,7 @@ public abstract class ModelSelectorNavigationController<TView extends ModelSelec
 		getView().setModels(positionModel.sorted());
 	}
 
-	protected void setModelPsitionssToView(Stream<ModelPositions> stream) {
+	protected void setModelPositionsToView(Stream<ModelPositions> stream) {
 		ObservableList<ModelPositions> positionModel = FXCollections.observableArrayList();
 		stream.limit(40).forEach(m -> {
 			positionModel.add(new ModelPositions(m.getPositions(), m.getModel()));

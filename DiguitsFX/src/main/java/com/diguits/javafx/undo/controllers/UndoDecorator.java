@@ -3,7 +3,7 @@ package com.diguits.javafx.undo.controllers;
 import com.diguits.javafx.container.decorators.Action;
 import com.diguits.javafx.container.decorators.DecoratorBase;
 import com.diguits.javafx.container.decorators.OptionGroup;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.diguits.javafx.undo.UndoManager;
 import com.google.inject.Inject;
 
@@ -51,7 +51,7 @@ public class UndoDecorator extends DecoratorBase {
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 		builder.addSeparator(44);
 		builder.addOption().action(undoAction).priority(45);
 		builder.addOption().action(redoAction).priority(46);
@@ -60,7 +60,7 @@ public class UndoDecorator extends DecoratorBase {
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 		OptionGroup navigateOptionGroup = builder.addOptionGroup(EDIT)
 				.action(editGroupAction)
 				.priority(200)

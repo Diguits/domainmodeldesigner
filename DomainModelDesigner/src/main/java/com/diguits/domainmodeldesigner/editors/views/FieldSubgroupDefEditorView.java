@@ -19,10 +19,7 @@ public class FieldSubgroupDefEditorView extends BaseDefEditorView<FieldSubgroupD
 		GridPane gridPane = nodeFactory.createGridPaneForEdit();
 		chbHasVisualRepresentation = nodeFactory.createCheckBoxInsideGrid(gridPane, "%has_visual_representation");
 
-		AnchorPane anchorPane = new AnchorPane();
-		anchorPane.getChildren().add(gridPane);
-		nodeFactory.fitToAnchorPane(gridPane);
-		tab.setContent(anchorPane);
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 		return contentView;
 	}
 

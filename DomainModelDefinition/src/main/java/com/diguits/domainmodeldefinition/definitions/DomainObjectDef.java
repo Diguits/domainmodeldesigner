@@ -16,15 +16,15 @@ public class DomainObjectDef extends SimpleDomainObjectDef {
 
 	public DomainObjectDef(DomainModelDef owner) {
 		super(owner);
-		initialize();
 	}
 
 	public DomainObjectDef() {
 		super();
-		initialize();
 	}
 
-	private void initialize() {
+	@Override
+	protected void initialize() {
+		super.initialize();
 		fields = new ArrayList<FieldDef>();
 		primaryKey = new ArrayList<FieldDef>();
 		indexes = new ArrayList<IndexDef>();
@@ -69,14 +69,6 @@ public class DomainObjectDef extends SimpleDomainObjectDef {
 
 	public void setFieldGroups(List<FieldGroupDef> fieldGroups) {
 		this.fieldGroups = fieldGroups;
-	}
-
-	public DomainModelDef getOwnerDomainModel() {
-		return (DomainModelDef) getOwner();
-	}
-
-	public void setOwnerDomainModel(DomainModelDef domainModelDef) {
-		setOwner(domainModelDef);
 	}
 
 	public FieldDef getFieldByName(String name) {

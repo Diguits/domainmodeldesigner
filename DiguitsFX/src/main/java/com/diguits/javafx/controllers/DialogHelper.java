@@ -22,11 +22,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
 public class DialogHelper {
 	public static boolean showOKCancelDialog(IViewController<?> controller, StringExpression titleProperty,
 			ObservableBooleanValue okDisable) {
-		return showOKCancelDialog(controller, titleProperty, okDisable, 800, 600);
+		return showOKCancelDialog(controller, titleProperty, okDisable, 1024, 600);
 	}
 
 	public static boolean showOKCancelDialog(IViewController<?> controller, StringExpression titleProperty) {
@@ -34,7 +35,7 @@ public class DialogHelper {
 	}
 
 	public static boolean showOKCancelDialog(IViewController<?> controller, String title, ObservableBooleanValue okDisable) {
-		return showOKCancelDialog(controller, title, okDisable, 800, 600);
+		return showOKCancelDialog(controller, title, okDisable, 1024, 600);
 	}
 
 	public static boolean showOKCancelDialog(IViewController<?> controller, String title) {
@@ -62,11 +63,11 @@ public class DialogHelper {
 	}
 
 	public static boolean showNoButtonsDialog(IViewController<?> controller, StringExpression titleProperty) {
-		return showNoButtonsDialog(controller, titleProperty, 800, 600);
+		return showNoButtonsDialog(controller, titleProperty, 1024, 600);
 	}
 
 	public static boolean showNoButtonsDialog(IViewController<?> controller, String title) {
-		return showNoButtonsDialog(controller, title, 800, 600);
+		return showNoButtonsDialog(controller, title, 1024, 600);
 	}
 
 	public static boolean showNoButtonsDialog(IViewController<?> controller, StringExpression titleProperty, int width,
@@ -90,11 +91,11 @@ public class DialogHelper {
 
 	public static boolean showNoButtonsDialog(Dialog<ButtonType> dialog, IViewController<?> controller,
 			StringExpression titleProperty) {
-		return showNoButtonsDialog(dialog, controller, titleProperty, 800, 600);
+		return showNoButtonsDialog(dialog, controller, titleProperty, 1024, 600);
 	}
 
 	public static boolean showNoButtonsDialog(Dialog<ButtonType> dialog, IViewController<?> controller, String title) {
-		return showNoButtonsDialog(dialog, controller, title, 800, 600);
+		return showNoButtonsDialog(dialog, controller, title, 1024, 600);
 	}
 
 	public static boolean showNoButtonsDialog(Dialog<ButtonType> dialog, IViewController<?> controller,
@@ -218,29 +219,29 @@ public class DialogHelper {
 
 		BorderPane borderPane = new BorderPane();
 		if (width > 0) {
-			dialog.getDialogPane().setMaxWidth(width);
+			//dialog.getDialogPane().setMaxWidth(width);
 			dialog.getDialogPane().setPrefWidth(width);
 		}
 		if (height > 0) {
-			dialog.getDialogPane().setMinHeight(height);
+			//dialog.getDialogPane().setMinHeight(height);
 			dialog.getDialogPane().setPrefHeight(height);
 		}
 
 		borderPane.setBottom(new Separator(Orientation.HORIZONTAL));
 		borderPane.setPadding(new Insets(0, 0, 0, 0));
 
-		AnchorPane anchorPane = new AnchorPane();
-		ScrollPane scrollPane = new ScrollPane(anchorPane);
-		scrollPane.setFitToHeight(true);
-		scrollPane.setFitToWidth(true);
-		borderPane.setCenter(scrollPane);
+		//AnchorPane anchorPane = new AnchorPane();
+		//ScrollPane scrollPane = new ScrollPane(anchorPane);
+		//scrollPane.setFitToWidth(true);
 		Node view = controller.getView().getNodeView();
-		anchorPane.getChildren().add(view);
-		AnchorPane.setRightAnchor(view, 0.0);
-		AnchorPane.setTopAnchor(view, 0.0);
-		AnchorPane.setLeftAnchor(view, 0.0);
-		AnchorPane.setBottomAnchor(view, 0.0);
-
+		borderPane.setCenter(view);
+		//anchorPane.getChildren().add(view);
+		//AnchorPane.setRightAnchor(view, 0.0);
+		//AnchorPane.setTopAnchor(view, 0.0);
+		//AnchorPane.setLeftAnchor(view, 0.0);
+		//AnchorPane.setBottomAnchor(view, 0.0);
+		//Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		//stage.setMaximized(true);
 		dialog.getDialogPane().setContent(borderPane);
 		controller.setDialogContainer(dialog);
 		dialog.setOnHidden(e->controller.terminate());

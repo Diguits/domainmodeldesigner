@@ -1,5 +1,7 @@
 package com.diguits.domainmodeldefinition.definitions;
 
+import com.sun.org.glassfish.external.probe.provider.annotations.Probe;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -20,15 +22,15 @@ public class EntityDef extends DomainObjectDef {
 
 	public EntityDef(DomainModelDef owner) {
 		super(owner);
-		initialize();
 	}
 
 	public EntityDef() {
 		super();
-		initialize();
 	}
 
-	private void initialize() {
+	@Override
+	protected void initialize() {
+		super.initialize();
 		fields = new ArrayList<FieldDef>();
 		primaryKey = new ArrayList<FieldDef>();
 		indexes = new ArrayList<IndexDef>();
@@ -162,12 +164,6 @@ public class EntityDef extends DomainObjectDef {
 		}
 		result.addAll(fields);
 		return result;
-	}
-
-	public BoundedContextDef getBoundedContext(){
-		if(getModule()!=null)
-			return getModule().getOwnerBoundedContext();
-		return null;
 	}
 
 	@Override

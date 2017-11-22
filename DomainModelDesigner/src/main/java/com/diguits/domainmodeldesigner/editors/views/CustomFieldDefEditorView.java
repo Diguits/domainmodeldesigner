@@ -15,11 +15,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.StringConverter;
 
@@ -46,7 +42,8 @@ public class CustomFieldDefEditorView extends BaseDefEditorView<CustomFieldDefMo
 		cbxReference = nodeFactory.createComboBoxInsideGrid(gridPane, "%reference");
 		txaData = nodeFactory.createTextAreaInsideGrid(gridPane, "%data");
 		chbMultiline = nodeFactory.createCheckBoxInsideGrid(gridPane, "%multiline");
-		tab.setContent(nodeFactory.addAndFitToAnchorPane(gridPane));
+
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 		return contentView;
 	}
 

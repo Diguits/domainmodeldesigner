@@ -104,7 +104,7 @@
 }
 
 .split-pane *.split-pane-divider {
-    -fx-padding: 0.0 0.0 0.0 1.0px;
+    -fx-padding: 0.0 0.0 0.0 5.0px;
 }
 
 .tree-view{
@@ -127,4 +127,9 @@
 	-fx-padding: 3;
 	-fx-background-radius: 3 3 3 3;
 	-fx-background-color:  linear-gradient(white, lightgray );
+}
+
+.table-row-cell:selected .tissue-cell {
+    -fx-background-color: #F5AD11;
+    -fx-text-fill: white;
 }

@@ -15,75 +15,76 @@ import javafx.util.StringConverter;
 
 public final class TemplateProjectApplyView extends ModelView<BorderPane, TemplateProjectApplyConfigModel> {
 
-	private ComboBox<TemplateProjectApplyConfigModel> cbxApplyProjectConfig;
-	private Button btnAddProjectConfig;
-	private Node content;
+    private ComboBox<TemplateProjectApplyConfigModel> cbxApplyProjectConfig;
+    private Button btnAddProjectConfig;
+    private Node content;
 
-	@Override
-	protected void bindFieldsToModel() {
+    @Override
+    protected void bindFieldsToModel() {
 
-	}
+    }
 
-	@Override
-	protected BorderPane buildView() {
-		BorderPane borderPane = new BorderPane();
+    @Override
+    protected BorderPane buildView() {
+        BorderPane borderPane = new BorderPane();
 
-		GridPane gridPane = nodeFactory.createGridPaneForEdit();
+        GridPane gridPane = nodeFactory.createGridPaneForEdit();
 
-		nodeFactory.createLabelInsideGrid(gridPane, "%apply_project_config", 0);
-		HBox hBox = new HBox();
-		cbxApplyProjectConfig = nodeFactory.createComboBox();
-		btnAddProjectConfig = nodeFactory.createButton16x16("images/add.png");
-		HBox.setMargin(btnAddProjectConfig, new Insets(0, 2, 0, 2));
-		hBox.getChildren().addAll(cbxApplyProjectConfig, btnAddProjectConfig);
-		hBox.setAlignment(Pos.CENTER_LEFT);
-		gridPane.add(hBox, 1, 0);
-		GridPane.setMargin(hBox, new Insets(2));
-		borderPane.setTop(gridPane);
-		cbxApplyProjectConfig.setEditable(true);
-		cbxApplyProjectConfig.setConverter(new StringConverter<TemplateProjectApplyConfigModel>() {
+        nodeFactory.createLabelInsideGrid(gridPane, "%apply_project_config", 0);
+        HBox hBox = new HBox();
+        cbxApplyProjectConfig = nodeFactory.createComboBox();
+        btnAddProjectConfig = nodeFactory.createButton16x16("images/add.png");
+        HBox.setMargin(btnAddProjectConfig, new Insets(0, 2, 0, 2));
+        hBox.getChildren().addAll(cbxApplyProjectConfig, btnAddProjectConfig);
+        hBox.setAlignment(Pos.CENTER_LEFT);
+        gridPane.add(hBox, 1, 0);
+        GridPane.setMargin(hBox, new Insets(2));
+        borderPane.setTop(gridPane);
+        cbxApplyProjectConfig.setEditable(true);
 
-			@Override
-			public String toString(TemplateProjectApplyConfigModel model) {
-				return model == null ? null : model.getName();
-			}
+        cbxApplyProjectConfig.setConverter(new StringConverter<TemplateProjectApplyConfigModel>() {
 
-			@Override
-			public TemplateProjectApplyConfigModel fromString(String string) {
-				return null;
-			}
-		});
+            @Override
+            public String toString(TemplateProjectApplyConfigModel model) {
+                return model == null ? null : model.getName();
+            }
 
-		cbxApplyProjectConfig.getEditor().textProperty().addListener((v, o, n) -> {
-			TemplateProjectApplyConfigModel result = cbxApplyProjectConfig.getSelectionModel().getSelectedItem();
-			if (result != null)
-				result.setName(n);
-		});
+            @Override
+            public TemplateProjectApplyConfigModel fromString(String string) {
+                return cbxApplyProjectConfig.getItems().stream().filter(m -> m.getName().equals(string)).findFirst().get();
+            }
+        });
 
-		return borderPane;
-	}
+        /*cbxApplyProjectConfig.getEditor().textProperty().addListener((v, o, n) -> {
+            TemplateProjectApplyConfigModel result = cbxApplyProjectConfig.getSelectionModel().getSelectedItem();
+            if (result != null)
+                result.setName(n);
+        });*/
 
-	public void setTemplateProjectApplyConfigEditorView(TemplateProjectApplyConfigEditorView view) {
-		if (content != null)
-			content.disableProperty().unbind();
-		content = view.getNodeView();
-		content.disableProperty().bind(cbxApplyProjectConfig.getSelectionModel().selectedItemProperty().isNull());
-		getNodeView().setCenter(content);
-	}
+        return borderPane;
+    }
 
-	public ComboBox<TemplateProjectApplyConfigModel> getCbxApplyProjectConfig() {
-		return cbxApplyProjectConfig;
-	}
+    public void setTemplateProjectApplyConfigEditorView(TemplateProjectApplyConfigEditorView view) {
+        if (content != null)
+            content.disableProperty().unbind();
+        content = view.getNodeView();
+        content.disableProperty().bind(cbxApplyProjectConfig.getSelectionModel().selectedItemProperty().isNull());
+        getNodeView().setCenter(content);
+    }
 
-	public void setProjectConfigs(ListProperty<TemplateProjectApplyConfigModel> configsProperty) {
-		cbxApplyProjectConfig.itemsProperty().bind(configsProperty);
-	}
+    public ComboBox<TemplateProjectApplyConfigModel> getCbxApplyProjectConfig() {
+        return cbxApplyProjectConfig;
+    }
 
-	public void selectProjectConfig(TemplateProjectApplyConfigModel config) {
-		cbxApplyProjectConfig.getSelectionModel().select(config);
-	}
+    public void setProjectConfigs(ListProperty<TemplateProjectApplyConfigModel> configsProperty) {
+        cbxApplyProjectConfig.itemsProperty().bind(configsProperty);
+    }
 
-	public Button getBtnAddProjectConfig() {
-		return btnAddProjectConfig;
-	}
+    public void selectProjectConfig(TemplateProjectApplyConfigModel config) {
+        cbxApplyProjectConfig.getSelectionModel().select(config);
+    }
+
+    public Button getBtnAddProjectConfig() {
+        return btnAddProjectConfig;
+    }
 }

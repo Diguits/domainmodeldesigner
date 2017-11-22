@@ -52,7 +52,7 @@ public class LocalizedDataToCSVService implements ILocalizedDataToCSVService {
 			return v1.getClass().getSimpleName().compareTo(v2.getClass().getSimpleName());
 		});
 		for (BaseDef baseDef : allDefs) {
-			List<LocalizedDataDef> localizedDatas = baseDef.getLocalizedDatas();
+			List<LocalizedDataDef> localizedDatas = baseDef.getLocalizedDataList();
 			if (forLocale == null) {
 				for (LocaleDef locale : locales) {
 					int i = 0;
@@ -119,7 +119,7 @@ public class LocalizedDataToCSVService implements ILocalizedDataToCSVService {
 						localizedData = new LocalizedDataDef();
 						localizedData.setLocale(locale);
 						localizedData.setOwner(model);
-						model.getLocalizedDatas().add(localizedData);
+						model.getLocalizedDataList().add(localizedData);
 					}
 					localizedData.setCaption(localizedDataCSV.getCaption());
 					localizedData.setHint(localizedDataCSV.getHint());

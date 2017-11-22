@@ -119,7 +119,7 @@ public class FieldDefEditorView extends BaseDefEditorView<FieldDefModel> {
 		choDataType.getSelectionModel().selectedItemProperty().addListener((v, o, n) -> {
 			updateDataTypeDetail(o, n);
 		});
-		tab.setContent(nodeFactory.addAndFitToAnchorPane(gridPane));
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 
 		filterValuesView = createTreeTableEditorViewInNewTab(tabPane, "%filter_values", FilterValueDefModel.class, tvf-> tvf
 				.add(String.class, "%name").width(90).valueFactory(new TreeItemPropertyValueFactory<>("name")).useDefaultCellValueFactory().buildColumn()

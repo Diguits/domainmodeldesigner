@@ -25,7 +25,7 @@ public class IndexDefEditorView extends BaseDefEditorView<IndexDefModel> {
 		chbIsUnique = nodeFactory.createCheckBoxInsideGrid(gridPane, 1, 0, "%is_unique");
 		fieldsSwapView = new SwapModelEditorView<FieldDefModel>("%field_to_add", "%fields", nodeFactory);
 		gridPane.add(fieldsSwapView.getNodeView(), 0, 1, 2, 1);
-		tab.setContent(nodeFactory.addAndFitToAnchorPane(gridPane));
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 		return contentView;
 	}
 

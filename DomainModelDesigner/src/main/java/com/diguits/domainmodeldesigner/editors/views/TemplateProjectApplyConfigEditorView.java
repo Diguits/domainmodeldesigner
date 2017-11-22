@@ -63,7 +63,7 @@ public final class TemplateProjectApplyConfigEditorView
 		gridConfig.add(hBox, 1, 0);
 
 		nodeFactory.createLabelInsideGrid(gridConfig, "%templates", 1);
-		tabConfig.setContent(nodeFactory.addAndFitToAnchorPane(gridConfig));
+		tabConfig.setContent(nodeFactory.wrapInScrollPane(gridConfig));
 
 		bpaConfig.setTop(gridConfig);
 

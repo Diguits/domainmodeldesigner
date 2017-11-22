@@ -7,13 +7,11 @@ import com.diguits.javafx.undo.changes.PropertyChange;
 import com.diguits.javafx.views.INodeFactoryHelper;
 import com.diguits.javafx.views.PropertyChangeEventListener;
 
+import javafx.application.Platform;
 import javafx.beans.property.Property;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -80,25 +78,36 @@ public class TableModelEditorViewBuilder {
 				}
 				if (cellFactory != null) {
 
-					tableColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TTableModel, TDataType>>() {
-
-						@Override
-						public void handle(CellEditEvent<TTableModel, TDataType> event) {
-							if (propertyChangeEventListener != null) {
-								ObservableValue<TDataType> cellObservableValue = event.getTableColumn()
-										.getCellObservableValue(event.getRowValue());
-								if (cellObservableValue instanceof Property) {
-									Property<TDataType> property = (Property<TDataType>) cellObservableValue;
-									TDataType oldValue = event.getOldValue();
-									TDataType newValue = event.getNewValue();
-									property.setValue(newValue);
-									propertyChangeEventListener
-											.onPropertyChange(
-													new PropertyChange<TDataType>(oldValue, newValue, property));
-								}
-							}
+					tableColumn.setOnEditCommit(event -> {
+                        if (propertyChangeEventListener != null) {
+                            ObservableValue<TDataType> cellObservableValue = event.getTableColumn()
+                                    .getCellObservableValue(event.getRowValue());
+                            if (cellObservableValue instanceof Property) {
+                                Property<TDataType> property = (Property<TDataType>) cellObservableValue;
+                                TDataType oldValue = event.getOldValue();
+                                TDataType newValue = event.getNewValue();
+                                property.setValue(newValue);
+                                propertyChangeEventListener
+                                        .onPropertyChange(
+                                                new PropertyChange<TDataType>(oldValue, newValue, property));
+                            }
 						}
-					});
+						TableView<TTableModel> tableView = tableColumn.getTableView();
+						tableView.requestFocus();
+						int column = event.getTablePosition().getColumn();
+						column = (++column)%tableView.getColumns().size();
+						int row = event.getTablePosition().getRow();
+						if(column==0){
+							row = Math.max(row, ++row%tableView.getItems().size());
+						}
+						int finalRow = row;
+						int finalColumn = column;
+						Platform.runLater( () ->
+						{
+							tableView.getSelectionModel().select(finalRow, tableView.getColumns().get(finalColumn));
+							tableView.edit(finalRow, tableView.getColumns().get(finalColumn));
+						} );
+                    });
 				}
 			}
 		};

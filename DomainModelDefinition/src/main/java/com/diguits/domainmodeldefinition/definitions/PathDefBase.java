@@ -28,7 +28,13 @@ public abstract class PathDefBase extends BaseDef {
 	public List<FieldDef> getPathFieldChain() {
 		if (pathFieldChain == null && path != null && !path.trim().isEmpty()) {
 			pathFieldChain = new ArrayList<FieldDef>();
-			DomainObjectDef domainObject = owner instanceof DomainObjectDef ? (DomainObjectDef) owner : null;
+			DomainObjectDef domainObject = null;
+			if(owner instanceof DomainObjectDef){
+				domainObject = (DomainObjectDef) owner;
+			} else  if(owner instanceof FieldRelationshipDataDef){
+				FieldRelationshipDataDef relationshipDataDef = (FieldRelationshipDataDef) this.owner;
+				domainObject = relationshipDataDef.getRelationshipPart().getToRelationshipPart().getDomainObject();
+			}
 			if (domainObject != null) {
 				String[] fields = path.split("[.]");
 

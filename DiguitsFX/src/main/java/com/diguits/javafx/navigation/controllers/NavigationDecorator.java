@@ -5,7 +5,7 @@ import com.diguits.javafx.container.controllers.MainController;
 import com.diguits.javafx.container.decorators.Action;
 import com.diguits.javafx.container.decorators.DecoratorBase;
 import com.diguits.javafx.container.decorators.OptionGroup;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.google.inject.Inject;
 
 import javafx.beans.binding.Bindings;
@@ -103,7 +103,7 @@ public class NavigationDecorator extends DecoratorBase {
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 		builder.addOption().action(goFirstAction).priority(10);
 		builder.addOption().action(backAction).priority(20);
 		builder.addOption().action(forwardAction).priority(30);
@@ -111,7 +111,7 @@ public class NavigationDecorator extends DecoratorBase {
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 		OptionGroup navigateOptionGroup = builder.addOptionGroup(NAVIGATE)
 				.action(navigateGroupAction)
 				.priority(500)

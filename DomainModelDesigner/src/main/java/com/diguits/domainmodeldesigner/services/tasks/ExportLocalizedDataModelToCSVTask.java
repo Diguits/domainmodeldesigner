@@ -53,7 +53,7 @@ public class ExportLocalizedDataModelToCSVTask extends TaskBase<Void> {
 		updateProgress(0, totalCount);
 		for (BaseDefModel baseDef : allDefs) {
 			updateMessage(baseDef.getName());
-			List<LocalizedDataDefModel> localizedDatas = baseDef.getLocalizedDatas();
+			List<LocalizedDataDefModel> localizedDatas = baseDef.getLocalizedDataList();
 			if (forLocale == null) {
 				for (LocaleDefModel locale : locales) {
 					int i = 0;

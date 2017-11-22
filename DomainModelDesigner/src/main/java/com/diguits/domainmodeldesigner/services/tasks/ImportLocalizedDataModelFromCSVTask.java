@@ -65,7 +65,7 @@ public class ImportLocalizedDataModelFromCSVTask extends TaskBase<Void> {
 						localizedData = new LocalizedDataDefModel();
 						localizedData.setLocale(locale);
 						localizedData.setOwner(model);
-						model.getLocalizedDatas().add(localizedData);
+						model.getLocalizedDataList().add(localizedData);
 					}
 					localizedData.setCaption(localizedDataCSV.getCaption());
 					localizedData.setHint(localizedDataCSV.getHint());
@@ -74,9 +74,9 @@ public class ImportLocalizedDataModelFromCSVTask extends TaskBase<Void> {
 					localizedData.setCaption(localizedDataCSV.getCaption());
 
 				} else
-					logger.error("Could not find the locale »" + localizedDataCSV.getLocale() + "«");
+					logger.error("Could not find the locale ï¿½" + localizedDataCSV.getLocale() + "ï¿½");
 			} else {
-				logger.error("Could not find the model »" + localizedDataCSV.getDefId() + "«");
+				logger.error("Could not find the model ï¿½" + localizedDataCSV.getDefId() + "ï¿½");
 			}
 			position++;
 			updateProgress(position, totalCount);

@@ -8,7 +8,7 @@ import com.diguits.domainmodeldesigner.template.models.TemplateProjectDefModel;
 import com.diguits.domainmodeldesigner.template.models.TemplateProjectItemDefModel;
 import com.diguits.javafx.container.decorators.Action;
 import com.diguits.javafx.container.decorators.OptionGroup;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.diguits.javafx.container.decorators.TreeContainerDecorator;
 import com.diguits.javafx.navigation.controllers.NavigationDecorator;
 import com.diguits.javafx.system.controllers.SystemDecorator;
@@ -184,7 +184,7 @@ public class TemplateTreeDecorator extends TreeContainerDecorator<TemplateProjec
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 		// Project
 		builder.addOption()
 				.action(saveTemplateProjectsAction)
@@ -251,7 +251,7 @@ public class TemplateTreeDecorator extends TreeContainerDecorator<TemplateProjec
 	}
 
 	@Override
-	protected void buildContextMenuOptions(TemplateProjectItemDefModel model, OptionListBilder builder) {
+	protected void buildContextMenuOptions(TemplateProjectItemDefModel model, OptionListBuilder builder) {
 		super.buildContextMenuOptions(model, builder);
 		if (model != null) {
 			Class<? extends TemplateProjectItemDefModel> modelClass = model.getClass();
@@ -332,7 +332,7 @@ public class TemplateTreeDecorator extends TreeContainerDecorator<TemplateProjec
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 		// File
 		builder.addSeparator(SystemDecorator.FILE)
 				.priority(410);

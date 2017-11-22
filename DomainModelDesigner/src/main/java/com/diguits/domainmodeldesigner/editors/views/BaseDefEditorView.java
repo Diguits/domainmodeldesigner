@@ -6,9 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
 import org.controlsfx.control.PropertySheet;
 import com.diguits.domainmodeldesigner.services.DomainModelClientService;
 import com.diguits.domainmodeldesigner.domainmodel.models.BaseDefModel;
@@ -42,7 +40,8 @@ public class BaseDefEditorView<TModel extends BaseDefModel> extends NamedModelEd
 	protected Node buildContentView() {
 		Node contentView = super.buildContentView();
 		RowConstraints rowConstraints = nodeFactory.createRowConstraints();
-		rowConstraints.setVgrow(Priority.SOMETIMES);
+		rowConstraints.setVgrow(Priority.ALWAYS);
+		rowConstraints.setPrefHeight(Region.USE_COMPUTED_SIZE);
 		generalGridPane.getRowConstraints().add(rowConstraints);
 		GridPane.setValignment(nodeFactory.createLabelInsideGrid(generalGridPane, "%locales", 3), VPos.TOP);
 
@@ -61,8 +60,7 @@ public class BaseDefEditorView<TModel extends BaseDefModel> extends NamedModelEd
 		localizedDataView.setCanAdd(false);
 		localizedDataView.setCanOrder(false);
 		localizedDataView.setCanDelete(false);
-
-
+		localizedDataView.setAutoHeight(true);
 		generalGridPane.add(localizedDataView.getNodeView(), 1, 3);
 		localizedDataView.setShowToolBar(false);
 		customFieldValuesTab = nodeFactory.createAndAddTab(tabPane, "%custom_field_values");
@@ -83,7 +81,7 @@ public class BaseDefEditorView<TModel extends BaseDefModel> extends NamedModelEd
 	protected void bindFieldsToModel() {
 		super.bindFieldsToModel();
 		if (getModel() != null) {
-			localizedDataView.setModel(getModel().localizedDatasProperty());
+			localizedDataView.setModel(getModel().localizedDataListProperty());
 			updateItemList();
 			getModel().getCustomFieldValues().addListener((ListChangeListener<CustomFieldValueDefModel>) c -> {
 				updateItemList();

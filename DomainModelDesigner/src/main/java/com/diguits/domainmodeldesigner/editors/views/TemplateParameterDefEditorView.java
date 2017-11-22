@@ -39,7 +39,7 @@ public class TemplateParameterDefEditorView extends TemplateProjectItemEditorVie
 		cbxReference = nodeFactory.createComboBoxInsideGrid(gridPane, "%reference");
 		txaData = nodeFactory.createTextAreaInsideGrid(gridPane, "%data");
 		chbMultiline = nodeFactory.createCheckBoxInsideGrid(gridPane, "%multiline");
-		tab.setContent(nodeFactory.addAndFitToAnchorPane(gridPane));
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 		return contentView;
 	}
 

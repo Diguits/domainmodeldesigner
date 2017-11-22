@@ -76,7 +76,7 @@ public class DomainModelDefinitionVisitorBase implements IEntityDefinitionVisito
 	}
 
 	@Override
-	public void visiCustomFieldDef(CustomFieldDef customFieldDef, BaseDef owner) {
+	public void visitCustomFieldDef(CustomFieldDef customFieldDef, BaseDef owner) {
 		visitBaseDef(customFieldDef, owner);
 	}
 

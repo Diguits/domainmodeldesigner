@@ -6,11 +6,11 @@ import com.diguits.javafx.container.decorators.Option.OptionBuilder;
 import com.diguits.javafx.container.decorators.OptionGroup.OptionGroupBuilder;
 import com.diguits.javafx.container.decorators.OptionSeparator.OptionSeparatorBuilder;
 
-public class OptionListBilder {
+public class OptionListBuilder {
 	List<OptionBase> options;
 
 
-	public OptionListBilder(List<OptionBase> options) {
+	public OptionListBuilder(List<OptionBase> options) {
 		super();
 		this.options = options;
 	}

@@ -22,11 +22,11 @@ public class DomainModelStructureTreeView extends TreeContainerView<DomainModelS
 		}
 	}
 
-	public void copySelectedName() {
+	public void copySelectedPath() {
 		if (treeView.getSelectionModel().getSelectedItem() != null) {
 			final Clipboard clipboard = Clipboard.getSystemClipboard();
 			final ClipboardContent content = new ClipboardContent();
-			content.putString(treeView.getSelectionModel().getSelectedItem().getValue().getName());
+			content.putString(treeView.getSelectionModel().getSelectedItem().getValue().getCode());
 			clipboard.setContent(content);
 		}
 	}

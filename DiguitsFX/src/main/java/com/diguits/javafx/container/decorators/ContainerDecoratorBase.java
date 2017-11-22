@@ -25,7 +25,7 @@ public abstract class ContainerDecoratorBase<TModel extends ModelBase, TControll
 	public final List<OptionBase> getCustomToolBarOptions() {
 		if (customToolBarOptions == null) {
 			customToolBarOptions = new ArrayList<OptionBase>();
-			buildCustomToolBarOptions(new OptionListBilder(customToolBarOptions));
+			buildCustomToolBarOptions(new OptionListBuilder(customToolBarOptions));
 		}
 		return customToolBarOptions;
 	}
@@ -35,7 +35,7 @@ public abstract class ContainerDecoratorBase<TModel extends ModelBase, TControll
 		if (model != null) {
 			if (!contextMenusOptions.containsKey(getKeyForContextMenuCache(model))) {
 				List<OptionBase> contexMenuOptions = new ArrayList<OptionBase>();
-				buildContextMenuOptions(model, new OptionListBilder(contexMenuOptions));
+				buildContextMenuOptions(model, new OptionListBuilder(contexMenuOptions));
 				contextMenusOptions.put(getKeyForContextMenuCache(model), contexMenuOptions);
 			}
 			return contextMenusOptions.get(getKeyForContextMenuCache(model));
@@ -47,9 +47,9 @@ public abstract class ContainerDecoratorBase<TModel extends ModelBase, TControll
 		return model.getClass();
 	}
 
-	protected abstract void buildCustomToolBarOptions(OptionListBilder builder);
+	protected abstract void buildCustomToolBarOptions(OptionListBuilder builder);
 
-	protected abstract void buildContextMenuOptions(TModel model, OptionListBilder builder);
+	protected abstract void buildContextMenuOptions(TModel model, OptionListBuilder builder);
 
 	public abstract ImageView getImageForModel(TModel item);
 

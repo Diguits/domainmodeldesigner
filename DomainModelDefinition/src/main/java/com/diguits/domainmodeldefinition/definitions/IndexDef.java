@@ -9,14 +9,14 @@ public class IndexDef extends BaseDef {
 
 	public IndexDef(EntityDef owner) {
 		super(owner);
-		initilize();
+		initialize();
 	}
 
 	public IndexDef() {
-		initilize();
+		initialize();
 	}
 
-	private void initilize() {
+	private void initialize() {
 		fields = new ArrayList<FieldDef>();
 	}
 

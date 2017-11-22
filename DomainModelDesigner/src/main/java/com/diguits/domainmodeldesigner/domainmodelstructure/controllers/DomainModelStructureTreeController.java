@@ -9,6 +9,7 @@ import com.diguits.domainmodeldesigner.domainmodelstructure.models.DomainModelSt
 import com.diguits.domainmodeldesigner.domainmodelstructure.views.DomainModelStructureTreeView;
 import com.diguits.javafx.container.controllers.TreeContainerController;
 import com.diguits.javafx.model.NamedModelBase;
+import com.diguits.templateengine.TemplateHelper;
 import com.google.inject.Inject;
 
 public class DomainModelStructureTreeController extends TreeContainerController<DomainModelStructureTreeView, DomainModelStructureItem> {
@@ -34,7 +35,7 @@ public class DomainModelStructureTreeController extends TreeContainerController<
 						EnumValueDef.class, FieldDef.class, FieldGroupDef.class, FieldSubgroupDef.class,
 						FilterDef.class, FilterLogicalOperator.class, FilterType.class, IndexDef.class,
 						BoundedContextDef.class, PathDefBase.class, RelationOverrideDef.class, RelationshipType.class,
-						ModuleDef.class, DomainModelDef.class });
+						ModuleDef.class, DomainModelDef.class, TemplateHelper.class });
 
 	}
 
@@ -60,7 +61,7 @@ public class DomainModelStructureTreeController extends TreeContainerController<
 		return result;
 	}
 
-	public void copySelectedName() {
-		getView().copySelectedName();
+	public void copySelectedPath() {
+		getView().copySelectedPath();
 	}
 }

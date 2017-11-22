@@ -48,7 +48,7 @@ public abstract class BaseDefEditorController<TView extends BaseDefEditorView<TM
 			public void onChanged(javafx.collections.ListChangeListener.Change<? extends LocaleDefModel> c) {
 				while (c.next()) {
 					List<? extends LocaleDefModel> added = c.getAddedSubList();
-					ObservableList<LocalizedDataDefModel> localizedDatas = getModel().getLocalizedDatas();
+					ObservableList<LocalizedDataDefModel> localizedDatas = getModel().getLocalizedDataList();
 					for (LocaleDefModel localeDefModel : added) {
 						LocalizedDataDefModel localizedData = new LocalizedDataDefModel();
 						localizedData.setLocale(localeDefModel);
@@ -152,10 +152,10 @@ public abstract class BaseDefEditorController<TView extends BaseDefEditorView<TM
 
 	private void fillLocales(BaseDefModel model, ObservableList<LocaleDefModel> locales) {
 		for (LocaleDefModel locale : locales) {
-			if (!model.getLocalizedDatas().stream().anyMatch(l -> l.getLocale() == locale)) {
+			if (!model.getLocalizedDataList().stream().anyMatch(l -> l.getLocale() == locale)) {
 				LocalizedDataDefModel localizedData = new LocalizedDataDefModel();
 				localizedData.setLocale(locale);
-				model.getLocalizedDatas().add(localizedData);
+				model.getLocalizedDataList().add(localizedData);
 			}
 		}
 	}

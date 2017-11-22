@@ -64,8 +64,8 @@ public interface IEntityDefinitionService {
 
     void serialize(String targetPath) throws FileNotFoundException, IOException;
     void deserialize(String sourcePath) throws FileNotFoundException, IOException;
-    void serialize(OutputStream stream) throws IOException;
-    void deserialize(InputStream stream) throws IOException;
+    void serialize(OutputStream stream, String ext) throws IOException;
+    void deserialize(InputStream stream, String ext) throws IOException;
     void setDomainModelDef(DomainModelDef domainModelDef);
 
 	void importLocalizedDataAsCSV(String path) throws FileNotFoundException, IOException;;

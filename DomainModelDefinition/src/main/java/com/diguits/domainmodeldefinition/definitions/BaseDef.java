@@ -9,7 +9,7 @@ public abstract class BaseDef implements IVisitable {
 	protected String name;
 	protected String description;
 	protected BaseDef owner;
-	protected List<LocalizedDataDef> localizedDatas;
+	protected List<LocalizedDataDef> localizedDataList;
 	protected List<CustomFieldValueDef> customFieldValues;
 
 	public BaseDef(BaseDef owner) {
@@ -20,7 +20,7 @@ public abstract class BaseDef implements IVisitable {
 	public BaseDef() {
 		super();
 		setId(UUID.randomUUID());
-		localizedDatas = new ArrayList<LocalizedDataDef>();
+		localizedDataList = new ArrayList<LocalizedDataDef>();
 		customFieldValues = new ArrayList<CustomFieldValueDef>();
 	}
 
@@ -52,12 +52,12 @@ public abstract class BaseDef implements IVisitable {
 		this.description = description;
 	}
 
-	public List<LocalizedDataDef> getLocalizedDatas() {
-		return localizedDatas;
+	public List<LocalizedDataDef> getLocalizedDataList() {
+		return localizedDataList;
 	}
 
-	public void setLocalizedDatas(List<LocalizedDataDef> localizedDatas) {
-		this.localizedDatas = localizedDatas;
+	public void setLocalizedDataList(List<LocalizedDataDef> localizedDataList) {
+		this.localizedDataList = localizedDataList;
 	}
 
 	public List<CustomFieldValueDef> getCustomFieldValues() {
@@ -69,87 +69,87 @@ public abstract class BaseDef implements IVisitable {
 	}
 
 	public String getDefaultCaption() {
-		LocalizedDataDef defualt = getDefaultLocalizedData(false);
-		if (defualt != null)
-			return defualt.getCaption();
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(false);
+		if (defaultValue != null)
+			return defaultValue.getCaption();
 		return null;
 	}
 
 	public void setDefaultCaption(String caption) {
-		LocalizedDataDef defualt = getDefaultLocalizedData(true);
-		if (defualt != null)
-			defualt.setCaption(caption);
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(true);
+		if (defaultValue != null)
+			defaultValue.setCaption(caption);
 	}
 
 	public String getDefaultHint() {
-		LocalizedDataDef defualt = getDefaultLocalizedData(false);
-		if (defualt != null)
-			return defualt.getHint();
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(false);
+		if (defaultValue != null)
+			return defaultValue.getHint();
 		return null;
 	}
 
 	public void setDefaultHint(String hint) {
-		LocalizedDataDef defualt = getDefaultLocalizedData(true);
-		if (defualt != null)
-			defualt.setHint(hint);
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(true);
+		if (defaultValue != null)
+			defaultValue.setHint(hint);
 	}
 
 	public String getDefaultPlaceHolder() {
-		LocalizedDataDef defualt = getDefaultLocalizedData(false);
-		if (defualt != null)
-			return defualt.getPlaceHolder();
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(false);
+		if (defaultValue != null)
+			return defaultValue.getPlaceHolder();
 		return null;
 	}
 
 	public void setDefaultPlaceHolder(String placeHolder) {
-		LocalizedDataDef defualt = getDefaultLocalizedData(true);
-		if (defualt != null)
-			defualt.setPlaceHolder(placeHolder);
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(true);
+		if (defaultValue != null)
+			defaultValue.setPlaceHolder(placeHolder);
 	}
 
 	public String getDefaultFormat() {
-		LocalizedDataDef defualt = getDefaultLocalizedData(false);
-		if (defualt != null)
-			return defualt.getFormat();
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(false);
+		if (defaultValue != null)
+			return defaultValue.getFormat();
 		return null;
 	}
 
 	public void setDefaultFormat(String format) {
-		LocalizedDataDef defualt = getDefaultLocalizedData(true);
-		if (defualt != null)
-			defualt.setFormat(format);
+		LocalizedDataDef defaultValue = getDefaultLocalizedData(true);
+		if (defaultValue != null)
+			defaultValue.setFormat(format);
 	}
 
 	public String getCaption(LocaleDef locale) {
 		LocalizedDataDef data = getLocalizedDataByLocale(locale);
 		if (data != null)
 			return data.getCaption();
-		return null;
+		return getDefaultCaption();
 	}
 
 	public String getHint(LocaleDef locale) {
 		LocalizedDataDef data = getLocalizedDataByLocale(locale);
 		if (data != null)
 			return data.getHint();
-		return null;
+		return getDefaultHint();
 	}
 
 	public String getPlaceHolder(LocaleDef locale) {
 		LocalizedDataDef data = getLocalizedDataByLocale(locale);
 		if (data != null)
 			return data.getPlaceHolder();
-		return null;
+		return getDefaultPlaceHolder();
 	}
 
 	public String getFormat(LocaleDef locale) {
 		LocalizedDataDef data = getLocalizedDataByLocale(locale);
 		if (data != null)
 			return data.getFormat();
-		return null;
+		return getDefaultFormat();
 	}
 
 	protected LocalizedDataDef getLocalizedDataByLocale(LocaleDef locale) {
-		for (LocalizedDataDef localizedData : localizedDatas) {
+		for (LocalizedDataDef localizedData : localizedDataList) {
 			if (localizedData.getLocale() == locale)
 				return localizedData;
 		}
@@ -161,14 +161,14 @@ public abstract class BaseDef implements IVisitable {
 		if (domainModel != null) {
 			LocaleDef defaultLocale = domainModel.getDefaultLocale();
 			if (defaultLocale != null) {
-				for (LocalizedDataDef localizedData : localizedDatas) {
+				for (LocalizedDataDef localizedData : localizedDataList) {
 					if (localizedData.getLocale() == defaultLocale)
 						return localizedData;
 				}
 				if (create) {
-					LocalizedDataDef newlocalizedData = new LocalizedDataDef();
-					newlocalizedData.setLocale(defaultLocale);
-					localizedDatas.add(newlocalizedData);
+					LocalizedDataDef newLocalizedData = new LocalizedDataDef();
+					newLocalizedData.setLocale(defaultLocale);
+					localizedDataList.add(newLocalizedData);
 				}
 			}
 		}
@@ -191,11 +191,9 @@ public abstract class BaseDef implements IVisitable {
 	public DomainModelDef getDomainModel() {
 		BaseDef parent = this;
 		while (parent != null && !(parent instanceof DomainModelDef)) {
-			parent = owner.getOwner();
+			parent = parent.getOwner();
 		}
-		if (parent instanceof DomainModelDef)
-			return (DomainModelDef) parent;
-		return null;
+		return (DomainModelDef) parent;
 	}
 
 	public Object getCustomFieldValue(String name) {
@@ -215,7 +213,7 @@ public abstract class BaseDef implements IVisitable {
 		for (CustomFieldValueDef customFieldValue : customFieldValues) {
 			customFieldValue.accept(visitor, this);
 		}
-		for (LocalizedDataDef localizedData : localizedDatas) {
+		for (LocalizedDataDef localizedData : localizedDataList) {
 			localizedData.accept(visitor, this);
 		}
 	}
@@ -242,7 +240,7 @@ public abstract class BaseDef implements IVisitable {
 	}
 
 	public LocalizedDataDef getLocalizedData(LocaleDef locale) {
-		for (LocalizedDataDef localizedDataDef : localizedDatas) {
+		for (LocalizedDataDef localizedDataDef : localizedDataList) {
 			if (localizedDataDef.getLocale() == locale)
 				return localizedDataDef;
 		}

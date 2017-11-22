@@ -5,7 +5,7 @@ import com.diguits.domainmodeldesigner.templateapplyconfig.models.TemplateApplyC
 import com.diguits.domainmodeldesigner.templateapplyconfig.models.TemplateProjectApplyConfigItemModel;
 import com.diguits.domainmodeldesigner.templateapplyconfig.models.TemplateProjectApplyConfigModel;
 import com.diguits.javafx.container.decorators.Action;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.diguits.javafx.container.decorators.TreeContainerDecorator;
 import com.google.inject.Inject;
 
@@ -54,7 +54,7 @@ public class TemplateApplyConfigTreeDecorator
 	}
 
 	@Override
-	protected void buildContextMenuOptions(TemplateProjectApplyConfigItemModel model, OptionListBilder builder) {
+	protected void buildContextMenuOptions(TemplateProjectApplyConfigItemModel model, OptionListBuilder builder) {
 		if (model != null) {
 			Class<? extends TemplateProjectApplyConfigItemModel> modelClass = model.getClass();
 			if (modelClass == TemplateProjectApplyConfigModel.class) {
@@ -68,7 +68,7 @@ public class TemplateApplyConfigTreeDecorator
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 		builder.addOption()
 				.action(addProjctApplyConfigAction)
 				.priority(1275);
@@ -76,7 +76,7 @@ public class TemplateApplyConfigTreeDecorator
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 		builder.addSeparator(TemplateTreeDecorator.TEMPLATE)
 		.priority(630);
 		builder.addOption(TemplateTreeDecorator.TEMPLATE)

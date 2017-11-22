@@ -129,7 +129,8 @@ public final class TemplateApplyConfigEditorView extends
 		txfOutputFilename = nodeFactory.createTextFieldInsideGrid(gridConfig, "%output_filename");
 		chbWaitForBefore = nodeFactory.createCheckBoxInsideGrid(gridConfig, "%wait_for_before");
 
-		tabConfig.setContent(nodeFactory.addAndFitToAnchorPane(gridConfig));
+		tabConfig.setContent(nodeFactory.wrapInScrollPane(gridConfig));
+
 
 		cbxModel.disableProperty().bind(chbForSpecificModel.selectedProperty().not());
 		cbxModelCombinig.disableProperty().bind(chbForSpecificModel.selectedProperty().not());

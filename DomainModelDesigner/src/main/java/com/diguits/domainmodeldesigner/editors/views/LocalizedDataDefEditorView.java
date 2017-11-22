@@ -25,7 +25,7 @@ public class LocalizedDataDefEditorView extends BaseDefEditorView<LocalizedDataD
 		txaHint = nodeFactory.createTextAreaInsideGrid(gridPane, "%hint");
 		txfPlaceHolder = nodeFactory.createTextFieldInsideGrid(gridPane, "%place_holder");
 		txfFormat = nodeFactory.createTextFieldInsideGrid(gridPane, "%format");
-		tab.setContent(nodeFactory.addAndFitToAnchorPane(gridPane));
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 		return contentView;
 	}
 

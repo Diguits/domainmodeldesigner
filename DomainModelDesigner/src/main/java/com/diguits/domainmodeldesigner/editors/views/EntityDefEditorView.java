@@ -52,7 +52,7 @@ public class EntityDefEditorView extends DomainObjectDefEditorView<EntityDefMode
 	protected Node buildContentView() {
 		Node contentView = super.buildContentView();
 
-		defaultFiltersView = createTreeTableEditorViewInNewTab(tabPane, "%default_columns", FilterDefModel.class, tvf-> tvf
+		defaultFiltersView = createTreeTableEditorViewInNewTab(tabPane, "%default_filters", FilterDefModel.class, tvf-> tvf
 				.add(String.class, "%name").width(90).valueFactory(new TreeItemPropertyValueFactory<>("name")).useDefaultCellValueFactory().buildColumn()
 				.add(FilterLogicalOperator.class, "%logical_operator").width(250).valueFactory(new TreeItemPropertyValueFactory<>("logicalOperator")).cellFactory(ChoiceBoxTreeTableCell.forTreeTableColumn(FXCollections.observableArrayList(FilterLogicalOperator.values()))).buildColumn()
 				.add(String.class, "%path").width(250).valueFactory(new TreeItemPropertyValueFactory<>("path")).useDefaultCellValueFactory().buildColumn()

@@ -28,7 +28,7 @@ public class LocaleDefEditorView extends BaseDefEditorView<LocaleDefModel> {
 		country = nodeFactory.createComboBoxInsideGrid(gridPane, "%country");
 		isDefault = nodeFactory.createCheckBoxInsideGrid(gridPane, "%is_default");
 		locale = nodeFactory.createLabelInsideGrid(gridPane, "", "%locale");
-		tab.setContent(nodeFactory.addAndFitToAnchorPane(gridPane));
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 		return contentView;
 	}
 

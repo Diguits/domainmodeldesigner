@@ -21,6 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
@@ -48,10 +49,8 @@ public abstract class DomainObjectDefEditorView<TModel extends DomainObjectDefMo
 		boundedContext = nodeFactory.createComboBoxInsideGrid(gridPane, "%boundedContext");
 		module = nodeFactory.createComboBoxInsideGrid(gridPane, "%module");
 		includeAditionalDomainObjectProperties(gridPane);
-		AnchorPane anchorPane = new AnchorPane();
-		anchorPane.getChildren().add(gridPane);
-		nodeFactory.fitToAnchorPane(gridPane);
-		tab.setContent(anchorPane);
+
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 
 		fieldsView = createTableEditorViewInNewTab(tabPane, "%fields", FieldDefModel.class, tvf-> tvf
 			.add(String.class, "%name").width(90).valueFactory(cd -> cd.getValue().nameProperty()).useDefaultCellValueFactory().buildColumn()
@@ -84,7 +83,7 @@ public abstract class DomainObjectDefEditorView<TModel extends DomainObjectDefMo
 
 		tab = nodeFactory.createAndAddTab(tabPane, "%primary_key");
 		primaryKeySwapView = new SwapModelEditorView<FieldDefModel>("%field_to_add", "%fields", nodeFactory);
-		anchorPane = primaryKeySwapView.getNodeView();
+		AnchorPane anchorPane = primaryKeySwapView.getNodeView();
 		tab.setContent(anchorPane);
 
 		relationsView = createTableEditorViewInNewTab(tabPane, "%relations", RelationshipDefModel.class, tvf-> tvf

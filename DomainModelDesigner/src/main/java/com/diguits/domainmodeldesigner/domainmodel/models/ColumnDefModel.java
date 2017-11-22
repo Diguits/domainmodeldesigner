@@ -23,14 +23,14 @@ public class ColumnDefModel extends PathDefBaseModel {
 	}
 
 	public void setVisible(boolean visible) {
-		if (this.visible != null || visible != false) {
+		if (this.visible != null || visible != true) {
 			visibleProperty().set(visible);
 		}
 	}
 
 	public BooleanProperty visibleProperty() {
 		if (visible == null) {
-			visible = new SimpleBooleanProperty(this, "visible", false);
+			visible = new SimpleBooleanProperty(this, "visible", true);
 		}
 		return visible;
 	}
@@ -42,14 +42,14 @@ public class ColumnDefModel extends PathDefBaseModel {
 	}
 
 	public void setWidthWeight(int widthWeight) {
-		if (this.widthWeight != null || widthWeight != 0) {
+		if (this.widthWeight != null || widthWeight != 100) {
 			widthWeightProperty().set(widthWeight);
 		}
 	}
 
 	public IntegerProperty widthWeightProperty() {
 		if (widthWeight == null) {
-			widthWeight = new SimpleIntegerProperty(this, "widthWeight", 0);
+			widthWeight = new SimpleIntegerProperty(this, "widthWeight", 100);
 		}
 		return widthWeight;
 	}
@@ -61,14 +61,14 @@ public class ColumnDefModel extends PathDefBaseModel {
 	}
 
 	public void setCanFilter(boolean canFilter) {
-		if (this.canFilter != null || canFilter != false) {
+		if (this.canFilter != null || canFilter != true) {
 			canFilterProperty().set(canFilter);
 		}
 	}
 
 	public BooleanProperty canFilterProperty() {
 		if (canFilter == null) {
-			canFilter = new SimpleBooleanProperty(this, "canFilter", false);
+			canFilter = new SimpleBooleanProperty(this, "canFilter", true);
 		}
 		return canFilter;
 	}
@@ -80,14 +80,14 @@ public class ColumnDefModel extends PathDefBaseModel {
 	}
 
 	public void setCanOrder(boolean canOrder) {
-		if (this.canOrder != null || canOrder != false) {
+		if (this.canOrder != null || canOrder != true) {
 			canOrderProperty().set(canOrder);
 		}
 	}
 
 	public BooleanProperty canOrderProperty() {
 		if (canOrder == null) {
-			canOrder = new SimpleBooleanProperty(this, "canOrder", false);
+			canOrder = new SimpleBooleanProperty(this, "canOrder", true);
 		}
 		return canOrder;
 	}

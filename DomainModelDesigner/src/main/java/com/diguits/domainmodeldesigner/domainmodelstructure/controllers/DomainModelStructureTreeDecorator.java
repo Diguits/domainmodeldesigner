@@ -2,7 +2,7 @@ package com.diguits.domainmodeldesigner.domainmodelstructure.controllers;
 
 import com.diguits.domainmodeldesigner.domainmodelstructure.models.DomainModelStructureItem;
 import com.diguits.javafx.container.decorators.Action;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.diguits.javafx.container.decorators.TreeContainerDecorator;
 import com.google.inject.Inject;
 
@@ -26,7 +26,7 @@ public class DomainModelStructureTreeDecorator
 		copyAction = Action.builder(resources)
 				.textKey("copy")
 				.image("page_white_copy")
-				.action(e -> controller.copySelectedName())
+				.action(e -> controller.copySelectedPath())
 				.disableWhen(controller.selectedModelProperty().isNull())
 				.keyCombination(KeyCode.C, KeyCombination.CONTROL_ANY)
 				.build();
@@ -48,7 +48,7 @@ public class DomainModelStructureTreeDecorator
 	}
 
 	@Override
-	protected void buildContextMenuOptions(DomainModelStructureItem model, OptionListBilder builder) {
+	protected void buildContextMenuOptions(DomainModelStructureItem model, OptionListBuilder builder) {
 		builder.addOption()
 				.action(copyAction)
 				.priority(100);
@@ -60,12 +60,12 @@ public class DomainModelStructureTreeDecorator
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 
 	}
 }

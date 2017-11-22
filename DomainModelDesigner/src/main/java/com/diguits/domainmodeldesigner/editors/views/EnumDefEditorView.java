@@ -6,6 +6,7 @@ import com.diguits.domainmodeldesigner.editors.views.common.TableModelEditorView
 
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -26,10 +27,7 @@ public class EnumDefEditorView extends BaseDefEditorView<EnumDefModel> {
 		chbUseIcon = nodeFactory.createCheckBoxInsideGrid(gridPane, "%use_icons");
 		chbUseTitle = nodeFactory.createCheckBoxInsideGrid(gridPane, "%use_title");
 		chbUseColor = nodeFactory.createCheckBoxInsideGrid(gridPane, "%use_color");
-		AnchorPane anchorPane = new AnchorPane();
-		anchorPane.getChildren().add(gridPane);
-		nodeFactory.fitToAnchorPane(gridPane);
-		tab.setContent(anchorPane);
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 
 		valuesView = createTableEditorViewInNewTab(tabPane, "%values" , EnumValueDefModel.class, tvf -> tvf
 			.add(String.class, "%name").width(90).valueFactory(cd -> cd.getValue().nameProperty()).useDefaultCellValueFactory().buildColumn()

@@ -45,10 +45,7 @@ public class FilterDefEditorView extends BaseDefEditorView<FilterDefModel> {
 		//choFilterType = nodeFactory.createChoiceBoxInsideGrid(gridPane, 1, 1, "%filter_type");
 		chbUseOperator = nodeFactory.createCheckBoxInsideGrid(gridPane, 1, 2, "%use_operator");
 
-		AnchorPane anchorPane = new AnchorPane();
-		anchorPane.getChildren().add(gridPane);
-		nodeFactory.fitToAnchorPane(gridPane);
-		tab.setContent(anchorPane);
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 
 		/*tab = nodeFactory.createAndAddTab(tabPane, "%inner_filters");
 

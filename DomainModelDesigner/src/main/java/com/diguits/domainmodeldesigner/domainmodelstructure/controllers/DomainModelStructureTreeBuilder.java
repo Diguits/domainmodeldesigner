@@ -55,7 +55,7 @@ public class DomainModelStructureTreeBuilder extends TreeBuilder<Class<?>[], Dom
 
 		treeView.setOnKeyPressed(e -> {
 			if (e.isControlDown() && e.getCode() == KeyCode.C) {
-				((DomainModelStructureTreeController)container).copySelectedName();
+				((DomainModelStructureTreeController)container).copySelectedPath();
 			}
 		});
 	}

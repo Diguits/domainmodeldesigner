@@ -12,11 +12,11 @@ public class BaseDefDTO {
 	protected String name;
 	protected String description;
 	protected UUID ownerId;
-	protected List<LocalizedDataDefDTO> localizedDatas;
+	protected List<LocalizedDataDefDTO> localizedDataList;
 	protected List<CustomFieldValueDefDTO> customFieldValues;
 
 	public BaseDefDTO() {
-		localizedDatas = new ArrayList<LocalizedDataDefDTO>();
+		localizedDataList = new ArrayList<LocalizedDataDefDTO>();
 		customFieldValues = new ArrayList<CustomFieldValueDefDTO>();
 	}
 
@@ -52,12 +52,12 @@ public class BaseDefDTO {
 		this.ownerId = ownerId;
 	}
 
-	public List<LocalizedDataDefDTO> getLocalizedDatas() {
-		return localizedDatas;
+	public List<LocalizedDataDefDTO> getLocalizedDataList() {
+		return localizedDataList;
 	}
 
-	public void setLocalizedDatas(List<LocalizedDataDefDTO> localizedDatas) {
-		this.localizedDatas = localizedDatas;
+	public void setLocalizedDataList(List<LocalizedDataDefDTO> localizedDataList) {
+		this.localizedDataList = localizedDataList;
 	}
 
 	public List<CustomFieldValueDefDTO> getCustomFieldValues() {

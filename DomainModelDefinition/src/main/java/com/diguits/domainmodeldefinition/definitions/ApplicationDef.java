@@ -9,15 +9,15 @@ public class ApplicationDef extends BaseDef {
 
 	public ApplicationDef(DomainModelDef owner) {
 		super(owner);
-		initilize();
+		initialize();
 	}
 
 	public ApplicationDef() {
 		super();
-		initilize();
+		initialize();
 	}
 
-	private void initilize() {
+	private void initialize() {
 		boundedContexts = new ArrayList<BoundedContextDef>();
 	}
 

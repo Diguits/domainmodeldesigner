@@ -31,7 +31,7 @@ public abstract class DecoratorBase implements IDecorator {
 	public final List<OptionBase> getMainToolBarOptions() {
 		if (mainToolBarOptions == null) {
 			mainToolBarOptions = new ArrayList<OptionBase>();
-			buildMainToolBarOptions(new OptionListBilder(mainToolBarOptions));
+			buildMainToolBarOptions(new OptionListBuilder(mainToolBarOptions));
 		}
 		return mainToolBarOptions;
 	}
@@ -40,13 +40,13 @@ public abstract class DecoratorBase implements IDecorator {
 	public final List<OptionBase> getMainMenuOptions() {
 		if (mainMenuOptions == null) {
 			mainMenuOptions = new ArrayList<OptionBase>();
-			buildMainMenuOptions(new OptionListBilder(mainMenuOptions));
+			buildMainMenuOptions(new OptionListBuilder(mainMenuOptions));
 		}
 		return mainMenuOptions;
 	}
 
-	protected abstract void buildMainToolBarOptions(OptionListBilder builder);
+	protected abstract void buildMainToolBarOptions(OptionListBuilder builder);
 
-	protected abstract void buildMainMenuOptions(OptionListBilder builder);
+	protected abstract void buildMainMenuOptions(OptionListBuilder builder);
 
 }

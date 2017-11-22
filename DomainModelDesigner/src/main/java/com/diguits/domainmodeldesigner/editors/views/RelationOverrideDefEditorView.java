@@ -23,10 +23,7 @@ public class RelationOverrideDefEditorView extends BaseDefEditorView<RelationOve
 		GridPane gridPane = nodeFactory.createGridPaneForEdit();
 		forEntity = nodeFactory.createComboBoxInsideGrid(gridPane, "%for_entity");
 		relationshipEntity = nodeFactory.createComboBoxInsideGrid(gridPane, "%relationship_entity");
-		AnchorPane anchorPane = new AnchorPane();
-		anchorPane.getChildren().add(gridPane);
-		nodeFactory.fitToAnchorPane(gridPane);
-		tab.setContent(anchorPane);
+		tab.setContent(nodeFactory.wrapInScrollPane(gridPane));
 		return contentView;
 	}
 

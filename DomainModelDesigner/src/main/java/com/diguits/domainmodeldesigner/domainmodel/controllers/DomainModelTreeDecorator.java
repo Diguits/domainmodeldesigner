@@ -12,7 +12,7 @@ import com.diguits.domainmodeldesigner.domainmodel.models.ValueObjectDefModel;
 import com.diguits.domainmodeldesigner.domainmodel.models.DomainModelDefModel;
 import com.diguits.javafx.container.decorators.Action;
 import com.diguits.javafx.container.decorators.OptionGroup;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.diguits.javafx.container.decorators.TreeContainerDecorator;
 import com.diguits.javafx.navigation.controllers.NavigationDecorator;
 import com.diguits.javafx.system.controllers.SystemDecorator;
@@ -271,7 +271,7 @@ public class DomainModelTreeDecorator extends TreeContainerDecorator<BaseDefMode
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 		builder.addOption()
 				.action(createDomainModelAction)
 				.priority(100);
@@ -333,7 +333,7 @@ public class DomainModelTreeDecorator extends TreeContainerDecorator<BaseDefMode
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 		builder.addOption(SystemDecorator.FILE)
 				.action(createDomainModelAction)
 				.priority(100);
@@ -426,7 +426,7 @@ public class DomainModelTreeDecorator extends TreeContainerDecorator<BaseDefMode
 	}
 
 	@Override
-	protected void buildContextMenuOptions(BaseDefModel model, OptionListBilder builder) {
+	protected void buildContextMenuOptions(BaseDefModel model, OptionListBuilder builder) {
 		super.buildContextMenuOptions(model, builder);
 		if (model != null) {
 			Class<? extends BaseDefModel> modelClass = model.getClass();

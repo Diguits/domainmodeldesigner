@@ -3,6 +3,7 @@ package com.diguits.domainmodeldefinition.serialization.dtomodel;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.diguits.domainmodeldefinition.definitions.DataType;
 import org.simpleframework.xml.Default;
 import com.diguits.domainmodeldefinition.definitions.FilterLogicalOperator;
 import com.diguits.domainmodeldefinition.definitions.FilterOperator;
@@ -16,6 +17,7 @@ public class FilterValueDefDTO extends BaseDefDTO
 	private FilterOperator operator;
 	private Object value;
 	private Object value2;
+	private DataType dataType;
 
     public FilterValueDefDTO()
     {
@@ -70,4 +72,11 @@ public class FilterValueDefDTO extends BaseDefDTO
 		this.value2 = value2;
 	}
 
+	public DataType getDataType() {
+		return dataType;
+	}
+
+	public void setDataType(DataType dataType) {
+		this.dataType = dataType;
+	}
 }

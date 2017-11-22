@@ -54,6 +54,6 @@ public class CustomFieldDef extends BaseDef {
 	@Override
 	public void accept(IEntityDefinitionVisitor visitor, BaseDef owner) {
 		super.accept(visitor, owner);
-		visitor.visiCustomFieldDef(this, owner);
+		visitor.visitCustomFieldDef(this, owner);
 	}
 }

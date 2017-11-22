@@ -44,8 +44,8 @@ public abstract class BaseDefMapperToBaseDefModelMapper<TFrom extends BaseDef, T
 		if (source == null || target == null)
 			return;
 		target.setDescription(source.getDescription());
-		List<LocalizedDataDefModel> LocalizedDatasList = target.getLocalizedDatas();
-		for (LocalizedDataDef item : source.getLocalizedDatas()) {
+		List<LocalizedDataDefModel> LocalizedDatasList = target.getLocalizedDataList();
+		for (LocalizedDataDef item : source.getLocalizedDataList()) {
 			LocalizedDatasList.add(getLocalizedDataDefToLocalizedDataDefModelMapper().map(item, context));
 		}
 		List<CustomFieldValueDefModel> CustomFieldValuesList = target.getCustomFieldValues();
@@ -58,11 +58,11 @@ public abstract class BaseDefMapperToBaseDefModelMapper<TFrom extends BaseDef, T
 
 		if (context instanceof BaseDefModelMappingContext) {
 			BaseDefModelMappingContext baseDefMappingContext = (BaseDefModelMappingContext) context;
-			for (int i = 0; i < source.getLocalizedDatas().size(); i++) {
-				if (target.getLocalizedDatas().get(i) != null && source.getLocalizedDatas().get(i) != null
-						&& source.getLocalizedDatas().get(i).getLocale() != null)
-					target.getLocalizedDatas().get(i).setLocale(baseDefMappingContext.getLocaleModels()
-							.get(source.getLocalizedDatas().get(i).getLocale().getId()));
+			for (int i = 0; i < source.getLocalizedDataList().size(); i++) {
+				if (target.getLocalizedDataList().get(i) != null && source.getLocalizedDataList().get(i) != null
+						&& source.getLocalizedDataList().get(i).getLocale() != null)
+					target.getLocalizedDataList().get(i).setLocale(baseDefMappingContext.getLocaleModels()
+							.get(source.getLocalizedDataList().get(i).getLocale().getId()));
 			}
 			for (int i = 0; i < source.getCustomFieldValues().size(); i++) {
 				if (target.getCustomFieldValues().get(i) != null && source.getCustomFieldValues().get(i) != null
@@ -79,8 +79,8 @@ public abstract class BaseDefMapperToBaseDefModelMapper<TFrom extends BaseDef, T
 			return;
 		target.setDescription(source.getDescription());
 		target.setId(source.getId());
-		List<LocalizedDataDef> LocalizedDatasList = target.getLocalizedDatas();
-		for (LocalizedDataDefModel item : source.getLocalizedDatas()) {
+		List<LocalizedDataDef> LocalizedDatasList = target.getLocalizedDataList();
+		for (LocalizedDataDefModel item : source.getLocalizedDataList()) {
 			LocalizedDatasList.add(getLocalizedDataDefToLocalizedDataDefModelMapper().mapBack(item, context));
 		}
 		List<CustomFieldValueDef> CustomFieldValuesList = target.getCustomFieldValues();
@@ -93,11 +93,11 @@ public abstract class BaseDefMapperToBaseDefModelMapper<TFrom extends BaseDef, T
 		target.setName(source.getName());
 		if (context instanceof BaseDefModelMappingContext) {
 			BaseDefModelMappingContext baseDefMappingContext = (BaseDefModelMappingContext) context;
-			for (int i = 0; i < source.getLocalizedDatas().size(); i++) {
-				if (target.getLocalizedDatas().get(i) != null && source.getLocalizedDatas().get(i) != null
-						&& source.getLocalizedDatas().get(i).getLocale() != null)
-					target.getLocalizedDatas().get(i).setLocale(baseDefMappingContext.getLocales()
-							.get(source.getLocalizedDatas().get(i).getLocale().getId()));
+			for (int i = 0; i < source.getLocalizedDataList().size(); i++) {
+				if (target.getLocalizedDataList().get(i) != null && source.getLocalizedDataList().get(i) != null
+						&& source.getLocalizedDataList().get(i).getLocale() != null)
+					target.getLocalizedDataList().get(i).setLocale(baseDefMappingContext.getLocales()
+							.get(source.getLocalizedDataList().get(i).getLocale().getId()));
 			}
 			for (int i = 0; i < source.getCustomFieldValues().size(); i++) {
 				if (target.getCustomFieldValues().get(i) != null && source.getCustomFieldValues().get(i) != null

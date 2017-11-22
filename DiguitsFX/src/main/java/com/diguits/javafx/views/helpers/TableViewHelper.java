@@ -8,6 +8,7 @@ public class TableViewHelper {
 	public static <T> TableView<T> createTableView() {
 		TableView<T> tableView = new TableView<T>();
 		tableView.setEditable(true);
+		tableView.getSelectionModel().setCellSelectionEnabled(true);
 		return tableView;
 	}
 

@@ -12,98 +12,99 @@ import javafx.beans.property.SimpleListProperty;
 
 public class BaseDefModel extends NamedModelBase implements IVisitable {
 
-	public BaseDefModel() {
-		super();
-	}
-	private ObjectProperty<BaseDefModel> owner;
-	private ListProperty<LocalizedDataDefModel> localizedDatas;
-	private ListProperty<CustomFieldValueDefModel> customFieldValues;
+    public BaseDefModel() {
+        super();
+    }
 
-	public BaseDefModel getOwner() {
-		if (owner != null)
-			return owner.get();
-		return null;
-	}
+    private ObjectProperty<BaseDefModel> owner;
+    private ListProperty<LocalizedDataDefModel> localizedDataList;
+    private ListProperty<CustomFieldValueDefModel> customFieldValues;
 
-	public void setOwner(BaseDefModel owner) {
-		if (this.owner != null || owner != null) {
-			ownerProperty().set(owner);
-		}
-	}
+    public BaseDefModel getOwner() {
+        if (owner != null)
+            return owner.get();
+        return null;
+    }
 
-	public ObjectProperty<BaseDefModel> ownerProperty() {
-		if (owner == null) {
-			owner = new SimpleObjectProperty<BaseDefModel>(this, "owner", null);
-		}
-		return owner;
-	}
+    public void setOwner(BaseDefModel owner) {
+        if (this.owner != null || owner != null) {
+            ownerProperty().set(owner);
+        }
+    }
 
-	public ObservableList<LocalizedDataDefModel> getLocalizedDatas() {
-		return localizedDatasProperty().get();
-	}
+    public ObjectProperty<BaseDefModel> ownerProperty() {
+        if (owner == null) {
+            owner = new SimpleObjectProperty<BaseDefModel>(this, "owner", null);
+        }
+        return owner;
+    }
 
-	public void setLocalizedDatas(ObservableList<LocalizedDataDefModel> localizedDatas) {
-		if (this.localizedDatas!= null || localizedDatas != null) {
-			localizedDatasProperty().set(localizedDatas);
-		}
-	}
+    public ObservableList<LocalizedDataDefModel> getLocalizedDataList() {
+        return localizedDataListProperty().get();
+    }
 
-	public ListProperty<LocalizedDataDefModel> localizedDatasProperty() {
-		if(localizedDatas == null){
-			localizedDatas = new SimpleListProperty<LocalizedDataDefModel>(this, "localizedDatas", null);
-		localizedDatas.set(FXCollections.observableArrayList());
-		}
-		return localizedDatas;
-	}
+    public void setLocalizedDataList(ObservableList<LocalizedDataDefModel> localizedDataList) {
+        if (this.localizedDataList != null || localizedDataList != null) {
+            localizedDataListProperty().set(localizedDataList);
+        }
+    }
 
-	public ObservableList<CustomFieldValueDefModel> getCustomFieldValues() {
-		return customFieldValuesProperty().get();
-	}
+    public ListProperty<LocalizedDataDefModel> localizedDataListProperty() {
+        if (localizedDataList == null) {
+            localizedDataList = new SimpleListProperty<LocalizedDataDefModel>(this, "localizedDataList", null);
+            localizedDataList.set(FXCollections.observableArrayList());
+        }
+        return localizedDataList;
+    }
 
-	public void setCustomFieldValues(ObservableList<CustomFieldValueDefModel> customFieldValues) {
-		if (this.customFieldValues!= null || customFieldValues != null) {
-			customFieldValuesProperty().set(customFieldValues);
-		}
-	}
+    public ObservableList<CustomFieldValueDefModel> getCustomFieldValues() {
+        return customFieldValuesProperty().get();
+    }
 
-	public ListProperty<CustomFieldValueDefModel> customFieldValuesProperty() {
-		if(customFieldValues == null){
-			customFieldValues = new SimpleListProperty<CustomFieldValueDefModel>(this, "customFieldValues", null);
-		customFieldValues.set(FXCollections.observableArrayList());
-		}
-		return customFieldValues;
-	}
+    public void setCustomFieldValues(ObservableList<CustomFieldValueDefModel> customFieldValues) {
+        if (this.customFieldValues != null || customFieldValues != null) {
+            customFieldValuesProperty().set(customFieldValues);
+        }
+    }
 
-	public void accept(IEntityDefinitionModelVisitor visitor, BaseDefModel owner){
-		for (LocalizedDataDefModel localizedData : getLocalizedDatas()) {
-			localizedData.accept(visitor, this);
-		}
-		for (CustomFieldValueDefModel customFieldValue : getCustomFieldValues()) {
-			customFieldValue.accept(visitor, this);
-		}
-	}
+    public ListProperty<CustomFieldValueDefModel> customFieldValuesProperty() {
+        if (customFieldValues == null) {
+            customFieldValues = new SimpleListProperty<CustomFieldValueDefModel>(this, "customFieldValues", null);
+            customFieldValues.set(FXCollections.observableArrayList());
+        }
+        return customFieldValues;
+    }
 
-	public String getOwnerPath() {
-		if (getOwner() != null)
-			return getOwner().getPath();
-		return "";
-	}
+    public void accept(IEntityDefinitionModelVisitor visitor, BaseDefModel owner) {
+        for (LocalizedDataDefModel localizedData : getLocalizedDataList()) {
+            localizedData.accept(visitor, this);
+        }
+        for (CustomFieldValueDefModel customFieldValue : getCustomFieldValues()) {
+            customFieldValue.accept(visitor, this);
+        }
+    }
 
-	private String getPath() {
-		String result = getName();
-		BaseDefModel current = this.getOwner();
-		while (current != null) {
-			result = current.getName() + "/" + result;
-			current = current.getOwner();
-		}
-		return result;
-	}
+    public String getOwnerPath() {
+        if (getOwner() != null)
+            return getOwner().getPath();
+        return "";
+    }
 
-	public LocalizedDataDefModel getLocalizedData(LocaleDefModel locale) {
-		for (LocalizedDataDefModel localizedDataDef : localizedDatas) {
-			if (localizedDataDef.getLocale() == locale)
-				return localizedDataDef;
-		}
-		return null;
-	}
+    private String getPath() {
+        String result = getName();
+        BaseDefModel current = this.getOwner();
+        while (current != null) {
+            result = current.getName() + "/" + result;
+            current = current.getOwner();
+        }
+        return result;
+    }
+
+    public LocalizedDataDefModel getLocalizedData(LocaleDefModel locale) {
+        for (LocalizedDataDefModel localizedDataDef : localizedDataList) {
+            if (localizedDataDef.getLocale() == locale)
+                return localizedDataDef;
+        }
+        return null;
+    }
 }

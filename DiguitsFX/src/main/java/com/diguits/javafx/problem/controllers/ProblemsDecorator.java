@@ -2,7 +2,7 @@ package com.diguits.javafx.problem.controllers;
 
 import com.diguits.javafx.container.decorators.Action;
 import com.diguits.javafx.container.decorators.ContainerDecoratorBase;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.google.inject.Inject;
 
 import javafx.scene.image.ImageView;
@@ -47,24 +47,24 @@ public class ProblemsDecorator extends ContainerDecoratorBase<ProblemItem, Probl
 	}
 
 	@Override
-	protected void buildCustomToolBarOptions(OptionListBilder builder) {
+	protected void buildCustomToolBarOptions(OptionListBuilder builder) {
 		builder.addOption()
 				.action(clearAction)
 				.priority(100);
 	}
 
 	@Override
-	protected void buildContextMenuOptions(ProblemItem model, OptionListBilder builder) {
+	protected void buildContextMenuOptions(ProblemItem model, OptionListBuilder builder) {
 
 	}
 
 	@Override
-	protected void buildMainToolBarOptions(OptionListBilder builder) {
+	protected void buildMainToolBarOptions(OptionListBuilder builder) {
 
 	}
 
 	@Override
-	protected void buildMainMenuOptions(OptionListBilder builder) {
+	protected void buildMainMenuOptions(OptionListBuilder builder) {
 
 	}
 }

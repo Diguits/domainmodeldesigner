@@ -7,7 +7,7 @@ import com.diguits.javafx.container.controllers.IContainerController;
 import com.diguits.javafx.container.decorators.Action;
 import com.diguits.javafx.container.decorators.IOptionToNodeFactory;
 import com.diguits.javafx.container.decorators.OptionBase;
-import com.diguits.javafx.container.decorators.OptionListBilder;
+import com.diguits.javafx.container.decorators.OptionListBuilder;
 import com.google.inject.Inject;
 
 import javafx.beans.property.StringProperty;
@@ -62,7 +62,7 @@ public class EditorsHoleView extends HoleViewBase<TabPane> {
 				.build();
 
 		List<OptionBase> options = new ArrayList<OptionBase>();
-		OptionListBilder builder = new OptionListBilder(options);
+		OptionListBuilder builder = new OptionListBuilder(options);
 		builder.addOption().action(closeTab);
 		builder.addOption().action(closeOtherTabs);
 		builder.addOption().action(closeAllTabs);

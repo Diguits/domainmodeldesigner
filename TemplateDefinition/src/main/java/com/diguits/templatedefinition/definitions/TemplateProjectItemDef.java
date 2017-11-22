@@ -7,7 +7,7 @@ public abstract class TemplateProjectItemDef {
     protected UUID id;
     protected String name;
     protected String description;
-    protected boolean active;
+    protected boolean active = true;
     protected TemplateProjectItemDef owner;
 
     public TemplateProjectItemDef() {

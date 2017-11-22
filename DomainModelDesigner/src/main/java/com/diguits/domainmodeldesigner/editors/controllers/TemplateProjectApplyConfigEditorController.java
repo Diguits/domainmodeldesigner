@@ -31,7 +31,7 @@ public class TemplateProjectApplyConfigEditorController
 	TemplateProjectApplyingController templateProjectApplyingController;
 
 	@Inject
-	DomainModelClientService domainModelClienteService;
+	DomainModelClientService domainModelClientService;
 
 	@Inject
 	TemplateToConfigSelectorController templateSelector;
